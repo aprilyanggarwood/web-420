@@ -1,2 +1,7 @@
-# web-420
-RESTFul APIs
+# WEB 420 RESTful APIs
+
+## Contributors
+
+* Professor Kumar
+* April Yang
+
