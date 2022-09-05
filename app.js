@@ -6,22 +6,66 @@
  Description: Intro to RESTful api
 */
 
-const express = require("express");
-const http = require("http");
-const swaggerUi = require("swagger-ui-express");
-const swaggerJsdoc = require("swagger-jsdoc");
-const mongoose = require("mongoose");
+const cors = require("cors");
+// const SwaggerUI = require("swagger-ui");
+// const pathToSwaggerUi = require("swagger-ui-dist").absolutePath();
+
+const express = require("express"); // yes
+const http = require("http"); //yes
+const swaggerUI = require("swagger-ui-express"); // yes
+const swaggerJsdoc = require("swagger-jsdoc"); //yes
+// const yaml = require("yamljs");
+
+// swaggerDocument = yaml.load("./docs/yang-composers.yaml");
+const mongoose = require("mongoose"); //yes
+
+const composerAPI = require("./routes/yang-composer-routes.js"); //yes
+
+// const composer01 = require("./routes/composer01.js");
+// const SwaggerUI = require("swagger-ui");
 
 /* Initialize Express */
-var app = express();
+const app = express(); //yes
 
 /* Set app port to connect to port 3000  */
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 3000); //yes
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.static(pathToSwaggerUi));
+app.use(express.json()); //yes
+app.use(express.urlencoded({ extended: true })); // yes
+app.use(cors());
+
+// app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+
+/**
+ * MongoDB Atlas connection string
+ */
+const conn =
+  "mongodb+srv://web420_user:s3cret@cluster0.vngflrc.mongodb.net/web420DB?retryWrites=true&w=majority";
+
+mongoose
+  .connect(conn, {
+    promiseLibrary: require("bluebird"),
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  })
+  .then(() => {
+    console.log(`Connection to web420DB on MongoDB Atlas successful`);
+  })
+  .catch((err) => {
+    console.log(`MongoDB Error: ${err.message}`);
+  });
 
 // Doc: define an object literal named options with the following properties/values
+// yes
 const options = {
   definition: {
     openapi: "3.0.0",
@@ -34,9 +78,16 @@ const options = {
 };
 
 /* Doc: call the swaggerJsdoc library using the options object literal. */
+// yes
 const openapiSpecification = swaggerJsdoc(options);
 /* Doc: wire the openapiSpecification variable to the app variable. Configure express to use /api-docs route to serve swaggerJsdoc  */
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(openapiSpecification)); // yes
+app.use("/api", composerAPI); // yes
+
+/**
+ * Example apis
+ */
+// app.use("/api", composer01);
 
 /* Doc: use the http library to create a new server that listens on the port 3000  */
 http.createServer(app).listen(app.get("port"), function () {

@@ -1,0 +1,113 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "My User Project CRUD",
+    "description": "My User Project Application API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:8000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "API for users in the system"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+
+  "paths": {
+    "/composers": {
+      "get": {
+        "tags": ["Composers"],
+        "description": "Reads,retrieves all composers within database",
+        "summary": "Returns a list of composers.",
+        "operationId": "findAllComposers",
+        "responses": {
+          "200": {
+            "description": "A list of composers"
+          },
+          "500": {
+            "description": "Server Exception"
+          },
+          "501": {
+            "description": "MongoDB Exception"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Composers"],
+        "description": "Adds a new composer object to database",
+        "summary": "Create a new composer.",
+        "operationId": "createComposer",
+        "requestBody": {
+          "description": "Composer object information.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "required": ["firstName", "lastName"],
+                "properties": {
+                  "firstName": {
+                    "description": "first name of composer",
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "description": "last name of composer",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Created new composer Object"
+          },
+          "500": {
+            "description": "Server Exception"
+          },
+          "501": {
+            "description": "MongoDB Exception"
+          }
+        }
+      }
+    },
+    "/composers/{id}": {
+      "get": {
+        "tags": ["Composers"],
+        "description": "Reads,retrieves a composers by id.",
+        "summary": "Returns a composer.",
+        "operationId": "findComposerById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Id to filter the composers collection by.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned a composer with corresponding Id"
+          },
+          "500": {
+            "description": "Server Exception"
+          },
+          "501": {
+            "description": "MongoDB Exception"
+          }
+        }
+      }
+    }
+  }
+}
