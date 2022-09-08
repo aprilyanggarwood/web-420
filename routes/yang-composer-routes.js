@@ -5,13 +5,10 @@
  Modified By: April Yang
  Description: openapi documentation and Composer API 
 */
-
 const express = require("express");
 const router = express.Router();
 const Composer = require("../models/yang-composer.js");
-
 /**
- * findAllComposers
  * @openapi
  * /api/composers:
  *    get:
@@ -28,7 +25,6 @@ const Composer = require("../models/yang-composer.js");
  *       '501':
  *         description: MongoDB Exception
  */
-
 router.get("/composers", async (req, res) => {
   try {
     Composer.find({}, function (err, composers) {
@@ -49,9 +45,7 @@ router.get("/composers", async (req, res) => {
     });
   }
 });
-
 /**
- * findComposerById
  * @openapi
  * /api/composers/{id}:
  * get:
@@ -75,7 +69,6 @@ router.get("/composers", async (req, res) => {
  *       '501':
  *         description: MongoDB Exception
  */
-
 router.get("/composers/:id", async (req, res) => {
   try {
     const id = req.params.id;
@@ -97,9 +90,7 @@ router.get("/composers/:id", async (req, res) => {
     });
   }
 });
-
 /**
- * createComposer
  * @openapi
  * /api/composers:
  * post:
@@ -132,7 +123,6 @@ router.get("/composers/:id", async (req, res) => {
  *       '501':
  *         description: MongoDB Exception
  */
-
 router.post("/composers", async (req, res) => {
   try {
     let composer = new Composer({
