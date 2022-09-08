@@ -71,7 +71,7 @@ router.get("/composers", async (req, res) => {
 router.get("/composers/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    Composer.findOne({ _id: id }, function (error, composer) {
+    Composer.findOne({ _id: id }, function (err, composer) {
       if (err) {
         console.log(err);
         res.status(501).send({

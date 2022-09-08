@@ -20,6 +20,7 @@ const swaggerJsdoc = require("swagger-jsdoc"); //yes
 const mongoose = require("mongoose"); //yes
 
 const composerAPI = require("./routes/yang-composer-routes.js"); //yes
+const personAPI = require("./routes/yang-person-routes.js");
 
 // const composer01 = require("./routes/composer01.js");
 // const SwaggerUI = require("swagger-ui");
@@ -83,6 +84,7 @@ const openapiSpecification = swaggerJsdoc(options);
 /* Doc: wire the openapiSpecification variable to the app variable. Configure express to use /api-docs route to serve swaggerJsdoc  */
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(openapiSpecification)); // yes
 app.use("/api", composerAPI); // yes
+app.use("/api", personAPI); // yes
 
 /**
  * Example apis
