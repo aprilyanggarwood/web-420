@@ -5,9 +5,12 @@
  Modified By: April Yang
  Description: openapi documentation and Composer API 
 */
+
 const express = require("express");
 const router = express.Router();
 const Composer = require("../models/yang-composer.js");
+
+// findAllComposers
 /**
  * @openapi
  * /api/composers:
@@ -45,6 +48,8 @@ router.get("/composers", async (req, res) => {
     });
   }
 });
+
+// find a composers by ID , findComposerById
 /**
  * @openapi
  * /api/composers/{id}:
@@ -90,6 +95,8 @@ router.get("/composers/:id", async (req, res) => {
     });
   }
 });
+
+// createComposer
 /**
  * @openapi
  * /api/composers:

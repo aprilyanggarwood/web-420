@@ -12,7 +12,7 @@ const cors = require("cors");
 
 const express = require("express"); // yes
 const http = require("http"); //yes
-const swaggerUI = require("swagger-ui-express"); // yes
+const swaggerUi = require("swagger-ui-express"); // yes
 const swaggerJsdoc = require("swagger-jsdoc"); //yes
 // const yaml = require("yamljs");
 
@@ -66,7 +66,6 @@ mongoose
   });
 
 // Doc: define an object literal named options with the following properties/values
-// yes
 const options = {
   definition: {
     openapi: "3.0.0",
@@ -79,10 +78,9 @@ const options = {
 };
 
 /* Doc: call the swaggerJsdoc library using the options object literal. */
-// yes
 const openapiSpecification = swaggerJsdoc(options);
 /* Doc: wire the openapiSpecification variable to the app variable. Configure express to use /api-docs route to serve swaggerJsdoc  */
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(openapiSpecification)); // yes
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification)); // yes
 app.use("/api", composerAPI); // yes
 app.use("/api", personAPI); // yes
 
