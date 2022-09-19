@@ -19,8 +19,9 @@ const swaggerJsdoc = require("swagger-jsdoc"); //yes
 // swaggerDocument = yaml.load("./docs/yang-composers.yaml");
 const mongoose = require("mongoose"); //yes
 
-const composerAPI = require("./routes/yang-composer-routes.js"); //yes
+const composerAPI = require("./routes/yang-composer-routes.js");
 const personAPI = require("./routes/yang-person-routes.js");
+var userAPI = require("./routes/yang-session-routes.js");
 
 // const composer01 = require("./routes/composer01.js");
 // const SwaggerUI = require("swagger-ui");
@@ -83,6 +84,7 @@ const openapiSpecification = swaggerJsdoc(options);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification)); // yes
 app.use("/api", composerAPI); // yes
 app.use("/api", personAPI); // yes
+app.use("/api", userAPI);
 
 /**
  * Example apis
