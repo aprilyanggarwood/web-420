@@ -21,7 +21,8 @@ const mongoose = require("mongoose"); //yes
 
 const composerAPI = require("./routes/yang-composer-routes.js");
 const personAPI = require("./routes/yang-person-routes.js");
-var userAPI = require("./routes/yang-session-routes.js");
+const userAPI = require("./routes/yang-session-routes.js");
+const customerAPI = require("./routes/yang-node-shopper-routes.js");
 
 // const composer01 = require("./routes/composer01.js");
 // const SwaggerUI = require("swagger-ui");
@@ -85,6 +86,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification)); //
 app.use("/api", composerAPI); // yes
 app.use("/api", personAPI); // yes
 app.use("/api", userAPI);
+app.use("/api", customerAPI);
 
 /**
  * Example apis
