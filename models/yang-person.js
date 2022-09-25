@@ -24,5 +24,5 @@ const personSchema = new Schema({
   birthDate: { type: String },
 });
 
-// Export the composer module
+// Export the person module
 module.exports = mongoose.model("Person", personSchema);
