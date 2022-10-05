@@ -25,9 +25,6 @@ const userAPI = require("./routes/yang-session-routes.js");
 const customerAPI = require("./routes/yang-node-shopper-routes.js");
 const teamAPI = require("./routes/yang-team-routes.js");
 
-var distDir = __dirname + "/dist/";
-app.use(express.static(distDir));
-
 // const composer01 = require("./routes/composer01.js");
 // const SwaggerUI = require("swagger-ui");
 
