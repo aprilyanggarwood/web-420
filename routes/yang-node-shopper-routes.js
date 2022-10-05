@@ -163,9 +163,9 @@ router.post("/customers/:userName/invoices", async (req, res) => {
 /**
  * @openapi
  * /api/customers/{userName}/invoices:
- * get:
+ *   get:
  *     tags:
- *    - Customers
+ *       - Customers
  *     name: findAllInvoicesByUserName
  *     description: API to show all invoices by userName
  *     summary: Find all invoices by userName

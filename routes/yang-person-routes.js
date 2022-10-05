@@ -14,14 +14,14 @@ const Person = require("../models/yang-person.js");
 /**
  * @openapi
  * /api/persons:
- *    get:
- *      tags:
- *        - Persons
- *      description: Reads,retrieves all persons within database
- *      summary: Returns an array of person in JSON format.
- *      operationId: findAllPersons
- *      responses:
- *        '200':
+ *   get:
+ *     tags:
+ *       - Persons
+ *     description: Reads,retrieves all persons within database
+ *     summary: Returns an array of person in JSON format.
+ *     operationId: findAllPersons
+ *     responses:
+ *       '200':
  *         description: A list of composers
  *       '500':
  *         description: Server Exception
@@ -48,7 +48,7 @@ router.get("/persons", (req, res) => {
 /**
  * @openapi
  * /api/persons:
- * post:
+ *   post:
  *     tags:
  *       - Persons
  *     description: Adds a new person object to database
@@ -91,9 +91,9 @@ router.get("/persons", (req, res) => {
  *                       type: string
  *                     lastName:
  *                       type: string
- *               birthDate:
- *                 description: Birth date
- *                 type: string
+ *                     birthDate:
+ *                       description: Birth date
+ *                       type: string
  *     responses:
  *       '200':
  *         description: Created new person Object

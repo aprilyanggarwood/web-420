@@ -14,14 +14,15 @@ const Composer = require("../models/yang-composer.js");
 /**
  * @openapi
  * /api/composers:
- *    get:
- *      tags:
- *        - Composers
- *      description: Reads,retrieves all composers within database
- *      summary: Returns an array of composers in JSON format.
- *      operationId: findAllComposers
- *      responses:
- *        '200':
+ *   get:
+ *     tags:
+ *       - Composers
+ *     name: findAllComposers
+ *     description: Reads,retrieves all composers within database
+ *     summary: Returns an array of composers in JSON format.
+ *     operationId: findAllComposers
+ *     responses:
+ *       '200':
  *         description: A list of composers
  *       '500':
  *         description: Server Exception
@@ -53,11 +54,12 @@ router.get("/composers", async (req, res) => {
 /**
  * @openapi
  * /api/composers/{id}:
- * get:
+ *   get:
  *     tags:
- *    - Composers
- *    description: Reads,retrieves a composers by id.
- *     summary: Returns a composer.
+ *       - Composers
+ *     name: findComposerById
+ *     description: Reads,retrieves a composers by id.
+ *     summary: Returns a composer by id.
  *     operationId: findComposerById
  *     parameters:
  *       - name: id
@@ -100,7 +102,7 @@ router.get("/composers/:id", async (req, res) => {
 /**
  * @openapi
  * /api/composers:
- * post:
+ *   post:
  *     tags:
  *       - Composers
  *     description: Adds a new composer object to database
@@ -160,6 +162,7 @@ router.post("/composers", async (req, res) => {
 
 /**
  * @openapi
+ *
  * /api/composers/{id}:
  *   put:
  *     tags:
