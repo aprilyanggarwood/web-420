@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "nodemon app.js",
-    "start": "node app.js",
-    "proxy": "http://localhost:3000"
+    "start": "node app.js"
+    // "proxy": "http://localhost:3000"
   },
   "repository": {
     "type": "git",
