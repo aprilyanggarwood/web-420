@@ -5,7 +5,8 @@
   "private": true,
   "main": "app.js",
   "engines": {
-    "node": "14.x"
+    "node": "12.21.0",
+    "npm": "7.16.0"
   },
   "scripts": {
     "dev": "nodemon app.js",
