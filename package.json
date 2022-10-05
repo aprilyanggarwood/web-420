@@ -3,9 +3,10 @@
   "author": "Professor Krasso",
   "version": "1.0.0",
   "private": true,
+  "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
-    "start": "node app.js" 
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
